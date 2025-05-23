@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AES Web Interface</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>AES Encryption / Decryption</h1>
+        <label>Key (hex): <input type="text" id="key"></label>
+        <label>IV (hex): <input type="text" id="iv"></label>
+        <label>Text: <input type="text" id="text"></label>
+        <select id="mode">
+            <option value="cbc">CBC</option>
+            <option value="ctr">CTR</option>
+        </select>
+        <button onclick="encrypt()">Encrypt</button>
+        <button onclick="decrypt()">Decrypt</button>
+        <pre id="result"></pre>
+    </div>
+    <script>
+        async function encrypt() {
+            const res = await fetch("/encrypt", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    key: document.getElementById("key").value,
+                    iv: document.getElementById("iv").value,
+                    text: document.getElementById("text").value,
+                    mode: document.getElementById("mode").value
+                })
+            });
+            const data = await res.json();
+            document.getElementById("result").textContent = data.ciphertext || data.error;
+            if (data.key) document.getElementById("key").value = data.key;
+            if (data.iv) document.getElementById("iv").value = data.iv;
+        }
+
+        async function decrypt() {
+            const res = await fetch("/decrypt", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    key: document.getElementById("key").value,
+                    iv: document.getElementById("iv").value,
+                    ciphertext: document.getElementById("text").value,
+                    mode: document.getElementById("mode").value
+                })
+            });
+            const data = await res.json();
+            document.getElementById("result").textContent = data.plaintext || data.error;
+        }
+    </script>
+</body>
+</html>
