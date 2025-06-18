@@ -5,7 +5,7 @@ resource "aws_key_pair" "devsecops_key" {
 
 resource "aws_security_group" "devsecops_sg" {
   name        = "devsecops-sg"
-  description = "Permitir acesso à aplicação web"
+  description = "Permitir acesso a aplicacao web"
   ingress {
     from_port   = 5000
     to_port     = 5000
