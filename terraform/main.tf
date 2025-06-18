@@ -1,7 +1,4 @@
-resource "aws_key_pair" "devsecops_key" {
-  key_name   = var.key_name
-  public_key = var.public_key
-}
+
 
 resource "aws_security_group" "devsecops_sg" {
   name        = "devsecops-sg" 
