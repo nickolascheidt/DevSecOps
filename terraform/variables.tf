@@ -12,3 +12,8 @@ variable "key_name" {
   description = "Nome do par de chaves"
   default     = "devsecops-key"
 }
+
+variable "public_key" {
+  description = "Chave publica SSH para provisionar EC2"
+  type = string
+}
