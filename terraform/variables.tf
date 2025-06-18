@@ -10,7 +10,7 @@ variable "instance_type" {
 
 variable "key_name" {
   description = "Nome do par de chaves"
-  default     = "devsecops-key"
+  default     = "devsecops_key"
 }
 
 variable "public_key" {
