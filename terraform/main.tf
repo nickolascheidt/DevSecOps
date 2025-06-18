@@ -21,7 +21,7 @@ resource "aws_security_group" "devsecops_sg" {
 }
 
 resource "aws_instance" "devsecops_instance" {
-  ami                    = "ami-0c02fb55956c7d316" # Amazon Linux 2 (us-east-1)
+  ami                    = "ami-0aa7d40eeae50c9a9" # Amazon Linux 2 (sa-east-1)
   instance_type          = var.instance_type
   key_name               = var.key_name
   vpc_security_group_ids = [aws_security_group.devsecops_sg.id]
