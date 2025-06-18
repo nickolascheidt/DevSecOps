@@ -59,7 +59,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Rodar testes
-        run: pytest tests/
+        run: PYTHONPATH=. pytest tests/
 
   docker:
     name: Build Docker e Push
