@@ -1,6 +1,6 @@
 resource "aws_key_pair" "devsecops_key" {
   key_name   = var.key_name
-  public_key =  file("devsecops_key.pub")  #caminho da chave
+  public_key =  file("devsecops-key.pub")  #caminho da chave
 }
 
 resource "aws_security_group" "devsecops_sg" {
