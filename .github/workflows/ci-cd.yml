@@ -104,7 +104,6 @@ jobs:
           port: 22
           debug: true
           script: |
+            echo "Conexão SSH OK!"
             docker pull ${{ secrets.DOCKER_USERNAME }}/aes-web:latest
-            docker stop aes-web || true
-            docker rm aes-web || true
             docker run -d --name aes-web -p 80:5000 ${{ secrets.DOCKER_USERNAME }}/aes-web:latest
