@@ -58,4 +58,4 @@ def decrypt():
     return jsonify({"plaintext": result})
 
 if __name__ == "__main__":
-    app.run(debug=True) #trigger for ci/cd 8
+    app.run(debug=True) #trigger for ci/cd 9
