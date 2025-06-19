@@ -42,9 +42,14 @@ resource "aws_instance" "devsecops_instance" {
   user_data = <<-EOF
               #!/bin/bash
               sudo yum update -y
-              sudo yum install -y docker
-              sudo systemctl start docker
+              sudo yum install -y docker git
               sudo systemctl enable docker
+              sudo systemctl start docker
+              sudo usermod -aG docker ec2-user
+
+              # Instalar docker-compose
+              sudo curl -L "https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+              sudo chmod +x /usr/local/bin/docker-compose
               EOF
 
   tags = {
