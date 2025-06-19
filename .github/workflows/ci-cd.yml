@@ -105,5 +105,5 @@ jobs:
           debug: true
           script: |
             echo "Conexão SSH OK!"
-            docker pull ${{ secrets.DOCKER_USERNAME }}/aes-web:latest
-            docker run -d --name aes-web -p 80:5000 ${{ secrets.DOCKER_USERNAME }}/aes-web:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/aes-web:latest
+            sudo docker run -d --name aes-web -p 80:5000 ${{ secrets.DOCKER_USERNAME }}/aes-web:latest
