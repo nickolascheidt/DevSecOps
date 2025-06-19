@@ -103,7 +103,9 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           debug: true
+          request_pty: true
           script: |
-            echo "Conexão SSH OK!"
+            sudo systemctl start docker
+            sudo docker info
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/aes-web:latest
             sudo docker run -d --name aes-web -p 80:5000 ${{ secrets.DOCKER_USERNAME }}/aes-web:latest
