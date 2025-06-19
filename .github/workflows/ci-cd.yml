@@ -111,9 +111,8 @@ jobs:
             sudo docker run -d --name aes-web -p 80:5000 ${{ secrets.DOCKER_USERNAME }}/aes-web:latest
       - name: Obter outputs do Terraform
         id: terraform_outputs
-        run: |
-          cd terraform
-          terraform output -raw instance_public_dns > ../dns.txt
+        run: terraform output -raw instance_public_dns > dns.txt
+        working-directory: ./terraform
 
       - name: Mostrar DNS público
         run: |
