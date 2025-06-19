@@ -35,13 +35,9 @@ resource "aws_instance" "devsecops_instance" {
   user_data = <<-EOF
               #!/bin/bash
               sudo yum update -y
-              sudo yum install -y python3 git
-              curl -sL https://rpm.nodesource.com/setup_18.x | sudo bash -
-              sudo yum install -y nodejs
-              pip3 install flask pycryptodome
-              git clone https://github.com/seu-usuario/seu-repo.git /app
-              cd /app
-              nohup python3 app.py &
+              sudo yum install -y docker
+              sudo systemctl start docker
+              sudo systemctl enable docker
               EOF
 
   tags = {
